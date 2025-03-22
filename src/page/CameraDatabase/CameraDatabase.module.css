@@ -1,0 +1,427 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.searchContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  width: fit-content;
+  min-width: 300px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--empty-dark);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: var(--empty-dark);
+  color: white;
+}
+
+.searchInput:focus {
+  border-color: #007bff;
+}
+
+/* 브랜드 버튼 스타일 */
+.brandButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--empty-dark);
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.brandButton {
+  padding: 0.8rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+  font-weight: 500;
+}
+
+.brandButton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.brandButton.selected {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+}
+
+.cameraList {
+  background: var(--empty-dark);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+}
+
+.selectedBrandContent {
+  padding: 0.5rem;
+}
+
+.selectedBrandTitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.noResults {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  font-style: italic;
+}
+
+.loading, .error {
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  background: var(--empty-dark);
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.error {
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.lineSection {
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.lineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.lineHeader:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.lineTitle {
+  font-size: 1.1rem;
+  color: white;
+  margin: 0;
+  font-weight: 500;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.modelList {
+  padding: 0.5rem;
+}
+
+.modelSection {
+  margin-bottom: 0.5rem;
+}
+
+.cameraItem {
+  padding: 0.8rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.cameraItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.cameraItem.selected {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* 왼쪽 메뉴 안에 표시되는 모드 목록 */
+.modesListInMenu {
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  margin-top: 0.5rem;
+  border-left: 2px solid rgba(0, 123, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 0 4px 4px 0;
+}
+
+.modesTitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.modeItemInMenu {
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.modeItemInMenu:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(3px);
+}
+
+.modeItemInMenu.selected {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.details {
+  background: var(--empty-dark);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  min-height: calc(100vh - 300px);
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsTitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+/* 탭 메뉴 스타일 */
+.tabMenu {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tabButton.activeTab {
+  background-color: #00ff00;
+  color: black;
+  font-weight: 500;
+}
+
+.tabContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sensorDetails {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+}
+
+.fovCalculator {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.detailItem {
+  background: var(--empty-dark);
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.detailItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.detailItem h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.detailItem p {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 빈 상태 디자인 */
+.emptyDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  opacity: 0.7;
+  padding: 2rem;
+}
+
+.emptyDetailsContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emptyDetailsContent h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.emptyDetailsContent p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.cameraIcon {
+  margin-top: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .cameraList {
+    max-height: 500px;
+  }
+  
+  .brandButtons {
+    justify-content: center;
+  }
+
+  .details {
+    min-height: auto;
+  }
+  
+  .tabMenu {
+    flex-direction: row;
+  }
+  
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .brandButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .tabButton {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}

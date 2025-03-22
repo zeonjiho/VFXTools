@@ -1,0 +1,186 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sliderHeader label {
+  font-size: 1rem;
+  color: white;
+  font-weight: 500;
+}
+
+.sliderHeader span {
+  font-size: 1rem;
+  color: #00ff00;
+  font-weight: 500;
+}
+
+.focalLengthDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.focalLengthLabel {
+  background-color: rgba(0, 255, 0, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #00ff00;
+}
+
+.slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00ff00;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.7);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00ff00;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.7);
+}
+
+.presetButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.presetButton {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.presetButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.presetButton.selected {
+  background-color: #00ff00;
+  color: black;
+}
+
+.customInput {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.customFocalLength {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  outline: none;
+}
+
+.customFocalLength:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.customFocalLengthButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(0, 255, 0, 0.3);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.customFocalLengthButton:hover:not(:disabled) {
+  background-color: rgba(0, 255, 0, 0.5);
+}
+
+.customFocalLengthButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.visualizerContainer {
+  flex-grow: 1;
+  min-height: 400px;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+  
+  .sliderGroup {
+    width: 100%;
+  }
+  
+  .visualizerContainer {
+    min-height: 300px;
+  }
+} 

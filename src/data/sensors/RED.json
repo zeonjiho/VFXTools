@@ -1,0 +1,29 @@
+{
+  "RED": {
+    "KOMODO 6K": {
+      "info": {
+        "sensor type": "KOMODO® 19.9 MP Super 35mm Global Shutter CMOS",
+        "mount type": "RF mount"
+      },
+      "sensor dimensions": {
+        "6K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 6144,
+            "height": 3240
+          },
+          "mm": {
+            "width": 27.03,
+            "height": 14.26,
+            "diagonal": 30.56
+          },
+          "inches": {
+            "width": 1.064,
+            "height": 0.561,
+            "diagonal": 1.203
+          }
+        }
+      }
+    }
+  }
+} 

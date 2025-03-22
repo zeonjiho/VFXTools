@@ -1,0 +1,51 @@
+{
+  "DJI": {
+    "DJI Mini 3 Pro": {
+      "info": {
+        "sensor type": "1/1.3-inch CMOS",
+        "mount type": "Fixed"
+      },
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": 3840,
+            "height": 2160
+          },
+          "mm": {
+            "width": 7.44,
+            "height": 4.18,
+            "diagonal": 8.54
+          },
+          "inches": {
+            "width": 0.293,
+            "height": 0.165,
+            "diagonal": 0.336
+          }
+        }
+      }
+    },
+    "Inspire 1": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 6.17,
+            "height": 3.47,
+            "diagonal": 7.079
+          },
+          "inches": {
+            "width": 0.243,
+            "height": 0.136,
+            "diagonal": 0.278
+          }
+        }
+      }
+    }
+  }
+} 

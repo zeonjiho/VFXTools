@@ -1,0 +1,26 @@
+{
+  "Canon": {
+    "EOS 1D C": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 36.0,
+            "height": 20.25,
+            "diagonal": 41.305
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.797,
+            "diagonal": 1.626
+          }
+        }
+      }
+    }
+  }
+} 

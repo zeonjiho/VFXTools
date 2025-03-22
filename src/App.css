@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'inter';
+  src: url(./font/InterVariable.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-collapse: collapse;
+  text-decoration: none;
+  font-family: 'inter';
+}
+
+:root {
+  --main-back-dark: #121212;
+  --empty-dark: #1a1a1a;
+}
+
+body {
+  background-color: var(--main-back-dark);
+  color: white;
+}

@@ -1,0 +1,1029 @@
+{
+  "Blackmagic": {
+    "Cinema Camera": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 15.81,
+            "height": 8.88,
+            "diagonal": 18.133
+          },
+          "inches": {
+            "width": 0.622,
+            "height": 0.35,
+            "diagonal": 0.714
+          }
+        }
+      }
+    },
+    "Cinema Camera 6K": {
+      "info": {},
+      "sensor dimensions": {
+        "6K 3:2": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 4032
+          },
+          "mm": {
+            "width": 36,
+            "height": 24,
+            "diagonal": 43.267
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.945,
+            "diagonal": 1.703
+          }
+        },
+        "6K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 3200
+          },
+          "mm": {
+            "width": 36.0,
+            "height": 19.048,
+            "diagonal": 40.729
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.75,
+            "diagonal": 1.603
+          }
+        },
+        "6K 2.4:1": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 2520
+          },
+          "mm": {
+            "width": 36,
+            "height": 15,
+            "diagonal": 39.0
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.591,
+            "diagonal": 1.535
+          }
+        },
+        "4K 6:5": {
+          "focal length": "",
+          "resolution": {
+            "width": 4832,
+            "height": 4032
+          },
+          "mm": {
+            "width": 28.762,
+            "height": 24.0,
+            "diagonal": 37.46
+          },
+          "inches": {
+            "width": 1.132,
+            "height": 0.945,
+            "diagonal": 1.475
+          }
+        },
+        "4K 4:3": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 3072
+          },
+          "mm": {
+            "width": 24.381,
+            "height": 18.286,
+            "diagonal": 30.476
+          },
+          "inches": {
+            "width": 0.96,
+            "height": 0.72,
+            "diagonal": 1.2
+          }
+        },
+        "4K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2160
+          },
+          "mm": {
+            "width": 24.381,
+            "height": 12.857,
+            "diagonal": 27.563
+          },
+          "inches": {
+            "width": 0.96,
+            "height": 0.506,
+            "diagonal": 1.085
+          }
+        },
+        "2K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 2112,
+            "height": 1184
+          },
+          "mm": {
+            "width": 12.571,
+            "height": 7.048,
+            "diagonal": 14.412
+          },
+          "inches": {
+            "width": 0.495,
+            "height": 0.277,
+            "diagonal": 0.567
+          }
+        },
+        "HD 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "mm": {
+            "width": 11.429,
+            "height": 6.429,
+            "diagonal": 13.113
+          },
+          "inches": {
+            "width": 0.45,
+            "height": 0.253,
+            "diagonal": 0.516
+          }
+        }
+      }
+    },
+    "Micro Cinema Camera": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 12.48,
+            "height": 7.02,
+            "diagonal": 14.319
+          },
+          "inches": {
+            "width": 0.491,
+            "height": 0.276,
+            "diagonal": 0.563
+          }
+        }
+      }
+    },
+    "Micro Studio Camera 4K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 13.056,
+            "height": 7.344,
+            "diagonal": 14.98
+          },
+          "inches": {
+            "width": 0.514,
+            "height": 0.289,
+            "diagonal": 0.59
+          }
+        }
+      }
+    },
+    "PYXIS 6K": {
+      "info": {},
+      "sensor dimensions": {
+        "6K 3:2": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 4032
+          },
+          "mm": {
+            "width": 36,
+            "height": 24,
+            "diagonal": 43.267
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.945,
+            "diagonal": 1.703
+          }
+        },
+        "6K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 3200
+          },
+          "mm": {
+            "width": 36.0,
+            "height": 19.048,
+            "diagonal": 40.729
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.75,
+            "diagonal": 1.603
+          }
+        },
+        "6K 2.4:1": {
+          "focal length": "",
+          "resolution": {
+            "width": 6048,
+            "height": 2520
+          },
+          "mm": {
+            "width": 36,
+            "height": 15,
+            "diagonal": 39.0
+          },
+          "inches": {
+            "width": 1.417,
+            "height": 0.591,
+            "diagonal": 1.535
+          }
+        },
+        "4K 6:5": {
+          "focal length": "",
+          "resolution": {
+            "width": 4832,
+            "height": 4032
+          },
+          "mm": {
+            "width": 28.762,
+            "height": 24.0,
+            "diagonal": 37.46
+          },
+          "inches": {
+            "width": 1.132,
+            "height": 0.945,
+            "diagonal": 1.475
+          }
+        },
+        "4K 4:3": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 3072
+          },
+          "mm": {
+            "width": 24.381,
+            "height": 18.286,
+            "diagonal": 30.476
+          },
+          "inches": {
+            "width": 0.96,
+            "height": 0.72,
+            "diagonal": 1.2
+          }
+        },
+        "4K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2160
+          },
+          "mm": {
+            "width": 24.381,
+            "height": 12.857,
+            "diagonal": 27.563
+          },
+          "inches": {
+            "width": 0.96,
+            "height": 0.506,
+            "diagonal": 1.085
+          }
+        },
+        "2K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 2112,
+            "height": 1184
+          },
+          "mm": {
+            "width": 12.571,
+            "height": 7.048,
+            "diagonal": 14.412
+          },
+          "inches": {
+            "width": 0.495,
+            "height": 0.277,
+            "diagonal": 0.567
+          }
+        },
+        "HD 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "mm": {
+            "width": 11.429,
+            "height": 6.429,
+            "diagonal": 13.113
+          },
+          "inches": {
+            "width": 0.45,
+            "height": 0.253,
+            "diagonal": 0.516
+          }
+        }
+      }
+    },
+    "Pocket Cinema Camera": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 12.48,
+            "height": 7.02,
+            "diagonal": 14.319
+          },
+          "inches": {
+            "width": 0.491,
+            "height": 0.276,
+            "diagonal": 0.563
+          }
+        }
+      }
+    },
+    "Pocket Cinema Camera 4K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 18.96,
+            "height": 10.0,
+            "diagonal": 21.436
+          },
+          "inches": {
+            "width": 0.746,
+            "height": 0.394,
+            "diagonal": 0.844
+          }
+        }
+      }
+    },
+    "Pocket Cinema Camera 6K (Pro/G2)": {
+      "info": {},
+      "sensor dimensions": {
+        "6K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 6144,
+            "height": 3456
+          },
+          "mm": {
+            "width": 23.1,
+            "height": 12.99,
+            "diagonal": 26.502
+          },
+          "inches": {
+            "width": 0.909,
+            "height": 0.511,
+            "diagonal": 1.043
+          }
+        },
+        "6K 2.4:1": {
+          "focal length": "",
+          "resolution": {
+            "width": 6144,
+            "height": 2560
+          },
+          "mm": {
+            "width": 23.1,
+            "height": 9.622,
+            "diagonal": 25.024
+          },
+          "inches": {
+            "width": 0.909,
+            "height": 0.379,
+            "diagonal": 0.985
+          }
+        },
+        "5.7K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 5744,
+            "height": 3024
+          },
+          "mm": {
+            "width": 21.596,
+            "height": 11.366,
+            "diagonal": 24.404
+          },
+          "inches": {
+            "width": 0.85,
+            "height": 0.447,
+            "diagonal": 0.96
+          }
+        },
+        "4K DCI": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2160
+          },
+          "mm": {
+            "width": 15.4,
+            "height": 8.119,
+            "diagonal": 17.409
+          },
+          "inches": {
+            "width": 0.606,
+            "height": 0.32,
+            "diagonal": 0.685
+          }
+        },
+        "UHD 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 3840,
+            "height": 2160
+          },
+          "mm": {
+            "width": 14.438,
+            "height": 8.119,
+            "diagonal": 16.564
+          },
+          "inches": {
+            "width": 0.568,
+            "height": 0.32,
+            "diagonal": 0.652
+          }
+        },
+        "3.7K 6:5": {
+          "focal length": "",
+          "resolution": {
+            "width": 3728,
+            "height": 3104
+          },
+          "mm": {
+            "width": 14.016,
+            "height": 11.667,
+            "diagonal": 18.236
+          },
+          "inches": {
+            "width": 0.552,
+            "height": 0.459,
+            "diagonal": 0.718
+          }
+        },
+        "2.8K 17:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 2880,
+            "height": 1512
+          },
+          "mm": {
+            "width": 10.828,
+            "height": 5.683,
+            "diagonal": 12.229
+          },
+          "inches": {
+            "width": 0.426,
+            "height": 0.224,
+            "diagonal": 0.481
+          }
+        },
+        "HD 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "mm": {
+            "width": 7.219,
+            "height": 4.059,
+            "diagonal": 8.282
+          },
+          "inches": {
+            "width": 0.284,
+            "height": 0.16,
+            "diagonal": 0.326
+          }
+        }
+      }
+    },
+    "Production Camera 4K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 21.12,
+            "height": 11.88,
+            "diagonal": 24.232
+          },
+          "inches": {
+            "width": 0.831,
+            "height": 0.468,
+            "diagonal": 0.954
+          }
+        }
+      }
+    },
+    "Studio Camera 4K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 13.056,
+            "height": 7.344,
+            "diagonal": 14.98
+          },
+          "inches": {
+            "width": 0.514,
+            "height": 0.289,
+            "diagonal": 0.59
+          }
+        }
+      }
+    },
+    "Studio Camera HD": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 12.48,
+            "height": 7.02,
+            "diagonal": 14.319
+          },
+          "inches": {
+            "width": 0.491,
+            "height": 0.276,
+            "diagonal": 0.563
+          }
+        }
+      }
+    },
+    "URSA 4.6K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 14.25,
+            "diagonal": 29.072
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.561,
+            "diagonal": 1.144
+          }
+        }
+      }
+    },
+    "URSA 4K": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 21.12,
+            "height": 11.88,
+            "diagonal": 24.232
+          },
+          "inches": {
+            "width": 0.831,
+            "height": 0.467,
+            "diagonal": 0.953
+          }
+        }
+      }
+    },
+    "URSA Broadcast": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 13.056,
+            "height": 7.344,
+            "diagonal": 14.98
+          },
+          "inches": {
+            "width": 0.514,
+            "height": 0.289,
+            "diagonal": 0.59
+          }
+        }
+      }
+    },
+    "URSA Mini 4.6k": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 14.25,
+            "diagonal": 29.072
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.561,
+            "diagonal": 1.144
+          }
+        }
+      }
+    },
+    "URSA Mini 4k": {
+      "info": {},
+      "sensor dimensions": {
+        "All": {
+          "focal length": "",
+          "resolution": {
+            "width": "",
+            "height": ""
+          },
+          "mm": {
+            "width": 22.0,
+            "height": 11.88,
+            "diagonal": 25.003
+          },
+          "inches": {
+            "width": 0.866,
+            "height": 0.467,
+            "diagonal": 0.984
+          }
+        }
+      }
+    },
+    "URSA Mini Pro 4.6K": {
+      "info": {},
+      "sensor dimensions": {
+        "4.6K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4608,
+            "height": 2592
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 14.25,
+            "diagonal": 29.072
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.561,
+            "diagonal": 1.144
+          }
+        },
+        "4.6K 2.40:1": {
+          "focal length": "",
+          "resolution": {
+            "width": 4608,
+            "height": 1920
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 10.55,
+            "diagonal": 27.448
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.415,
+            "diagonal": 1.08
+          }
+        },
+        "4K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2304
+          },
+          "mm": {
+            "width": 22.52,
+            "height": 12.66,
+            "diagonal": 25.835
+          },
+          "inches": {
+            "width": 0.887,
+            "height": 0.498,
+            "diagonal": 1.017
+          }
+        },
+        "4K DCI": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2160
+          },
+          "mm": {
+            "width": 22.52,
+            "height": 11.87,
+            "diagonal": 25.457
+          },
+          "inches": {
+            "width": 0.887,
+            "height": 0.467,
+            "diagonal": 1.002
+          }
+        },
+        "Ultra HD": {
+          "focal length": "",
+          "resolution": {
+            "width": 3840,
+            "height": 2160
+          },
+          "mm": {
+            "width": 21.12,
+            "height": 11.87,
+            "diagonal": 24.227
+          },
+          "inches": {
+            "width": 0.831,
+            "height": 0.467,
+            "diagonal": 0.953
+          }
+        },
+        "3K Anamorphic": {
+          "focal length": "",
+          "resolution": {
+            "width": 3072,
+            "height": 2560
+          },
+          "mm": {
+            "width": 16.89,
+            "height": 14.07,
+            "diagonal": 21.983
+          },
+          "inches": {
+            "width": 0.665,
+            "height": 0.554,
+            "diagonal": 0.866
+          }
+        },
+        "2K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 2048,
+            "height": 1152
+          },
+          "mm": {
+            "width": 11.26,
+            "height": 6.33,
+            "diagonal": 12.917
+          },
+          "inches": {
+            "width": 0.443,
+            "height": 0.249,
+            "diagonal": 0.508
+          }
+        },
+        "2K DCI": {
+          "focal length": "",
+          "resolution": {
+            "width": 2048,
+            "height": 1080
+          },
+          "mm": {
+            "width": 11.26,
+            "height": 5.93,
+            "diagonal": 12.726
+          },
+          "inches": {
+            "width": 0.443,
+            "height": 0.233,
+            "diagonal": 0.501
+          }
+        },
+        "HD": {
+          "focal length": "",
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "mm": {
+            "width": 10.55,
+            "height": 5.93,
+            "diagonal": 12.102
+          },
+          "inches": {
+            "width": 0.415,
+            "height": 0.233,
+            "diagonal": 0.476
+          }
+        }
+      }
+    },
+    "URSA Mini Pro 4.6K G2": {
+      "info": {},
+      "sensor dimensions": {
+        "4.6K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4608,
+            "height": 2592
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 14.25,
+            "diagonal": 29.072
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.561,
+            "diagonal": 1.144
+          }
+        },
+        "4.6K 2.40:1": {
+          "focal length": "",
+          "resolution": {
+            "width": 4608,
+            "height": 1920
+          },
+          "mm": {
+            "width": 25.34,
+            "height": 10.55,
+            "diagonal": 27.448
+          },
+          "inches": {
+            "width": 0.997,
+            "height": 0.415,
+            "diagonal": 1.08
+          }
+        },
+        "4K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2304
+          },
+          "mm": {
+            "width": 22.52,
+            "height": 12.66,
+            "diagonal": 25.835
+          },
+          "inches": {
+            "width": 0.887,
+            "height": 0.498,
+            "diagonal": 1.017
+          }
+        },
+        "4K DCI": {
+          "focal length": "",
+          "resolution": {
+            "width": 4096,
+            "height": 2160
+          },
+          "mm": {
+            "width": 22.52,
+            "height": 11.87,
+            "diagonal": 25.457
+          },
+          "inches": {
+            "width": 0.887,
+            "height": 0.467,
+            "diagonal": 1.002
+          }
+        },
+        "Ultra HD": {
+          "focal length": "",
+          "resolution": {
+            "width": 3840,
+            "height": 2160
+          },
+          "mm": {
+            "width": 21.12,
+            "height": 11.87,
+            "diagonal": 24.227
+          },
+          "inches": {
+            "width": 0.831,
+            "height": 0.467,
+            "diagonal": 0.953
+          }
+        },
+        "3K Anamorphic": {
+          "focal length": "",
+          "resolution": {
+            "width": 3072,
+            "height": 2560
+          },
+          "mm": {
+            "width": 16.89,
+            "height": 14.07,
+            "diagonal": 21.983
+          },
+          "inches": {
+            "width": 0.665,
+            "height": 0.554,
+            "diagonal": 0.866
+          }
+        },
+        "2K 16:9": {
+          "focal length": "",
+          "resolution": {
+            "width": 2048,
+            "height": 1152
+          },
+          "mm": {
+            "width": 11.26,
+            "height": 6.33,
+            "diagonal": 12.917
+          },
+          "inches": {
+            "width": 0.443,
+            "height": 0.249,
+            "diagonal": 0.508
+          }
+        },
+        "2K DCI": {
+          "focal length": "",
+          "resolution": {
+            "width": 2048,
+            "height": 1080
+          },
+          "mm": {
+            "width": 11.26,
+            "height": 5.93,
+            "diagonal": 12.726
+          },
+          "inches": {
+            "width": 0.443,
+            "height": 0.233,
+            "diagonal": 0.501
+          }
+        },
+        "HD": {
+          "focal length": "",
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "mm": {
+            "width": 10.55,
+            "height": 5.93,
+            "diagonal": 12.102
+          },
+          "inches": {
+            "width": 0.415,
+            "height": 0.233,
+            "diagonal": 0.476
+          }
+        }
+      }
+    }
+  }
+} 
