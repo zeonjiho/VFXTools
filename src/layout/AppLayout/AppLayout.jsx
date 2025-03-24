@@ -38,6 +38,12 @@ const AppLayout = () => {
                         >
                             Cameras
                         </p>
+                        <p 
+                            className={isActive('/filename-generator') ? styles.active : ''} 
+                            onClick={() => navigate('/filename-generator')}
+                        >
+                            Filename Generator
+                        </p>
                         {/* <p 
                             className={isActive('/lens-calculator') ? styles.active : ''} 
                             onClick={() => navigate('/lens-calculator')}

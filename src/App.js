@@ -6,6 +6,7 @@ import Login from './page/Login/Login';
 import CameraDatabase from './page/CameraDatabase/CameraDatabase';
 import Plugins from './page/Plugins/Plugins';
 import Purchase from './page/Purchase/Purchase';
+import FilenameGenerator from './page/FilenameGenerator/FilenameGenerator';
 function App() {
   return (
     <div>
@@ -16,7 +17,7 @@ function App() {
           <Route path='camera-database' element={<CameraDatabase />} />
           <Route path='plugins' element={<Plugins />} />
           <Route path='purchase' element={<Purchase />} />
-
+          <Route path='filename-generator' element={<FilenameGenerator />} />
         </Route>
       </Routes>
     </div>
