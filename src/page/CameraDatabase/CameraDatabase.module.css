@@ -1,90 +1,110 @@
 .container {
-  padding: 2rem;
-  max-width: 1200px;
+  /* padding: 0rem; */
+  max-width: 1800px;
   margin: 0 auto;
+  /* background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%); */
+  min-height: 100vh;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   color: white;
   text-align: center;
-  font-weight: 700;
+  /* font-weight: 800; */
+  font-family: var(--font-lora);
+  font-weight: 300;
+  /* background: linear-gradient(45deg, #fff, #a8a8a8); */
+  letter-spacing: -0.5px;
+  color: #fff;
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  /* text-shadow: 2px 2px 4px rgba(0,0,0,0.3); */
 }
 
 .searchContainer {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 }
 
 .searchInput {
-  width: fit-content;
-  min-width: 300px;
-  padding: 1rem;
+  width: 100%;
+  max-width: 500px;
+  padding: 1.2rem;
   font-size: 1.1rem;
-  border: 2px solid var(--empty-dark);
-  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
   outline: none;
-  transition: border-color 0.3s ease;
-  background-color: var(--empty-dark);
+  transition: all 0.3s ease;
+  background-color: rgba(255,255,255,0.05);
   color: white;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .searchInput:focus {
-  border-color: #007bff;
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0,255,0,0.2);
 }
 
 /* 브랜드 버튼 스타일 */
 .brandButtons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-bottom: 2rem;
-  padding: 1rem;
-  background: var(--empty-dark);
-  border-radius: 8px;
+  padding: 1.2rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
   justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .brandButton {
-  padding: 0.8rem 1.2rem;
-  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.8rem 1.5rem;
+  background: rgba(255,255,255,0.05);
   color: white;
-  border: none;
-  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   outline: none;
   font-weight: 500;
+  backdrop-filter: blur(5px);
 }
 
 .brandButton:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.1);
   transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .brandButton.selected {
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(45deg, #00ff00, #00cc00);
+  color: black;
+  border: none;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 5px 15px rgba(0,255,0,0.3);
+  font-weight: 600;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 2rem;
 }
 
 .cameraList {
-  background: var(--empty-dark);
-  border-radius: 8px;
-  padding: 1rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 1.2rem;
   max-height: calc(100vh - 300px);
   overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .selectedBrandContent {
@@ -92,12 +112,13 @@
 }
 
 .selectedBrandTitle {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: white;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   text-align: center;
+  font-weight: 600;
 }
 
 .noResults {
@@ -124,27 +145,28 @@
 
 .lineSection {
   margin-bottom: 1rem;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .lineHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.05);
-  transition: background-color 0.2s ease;
+  background: rgba(255,255,255,0.03);
+  transition: all 0.3s ease;
 }
 
 .lineHeader:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.05);
 }
 
 .lineTitle {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: white;
   margin: 0;
   font-weight: 500;
@@ -152,8 +174,8 @@
 
 .arrow {
   transition: transform 0.3s ease;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
 }
 
 .arrow.expanded {
@@ -161,120 +183,138 @@
 }
 
 .modelList {
-  padding: 0.5rem;
+  padding: 0.8rem;
 }
 
 .modelSection {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .cameraItem {
-  padding: 0.8rem 1rem;
-  margin: 0.25rem 0;
-  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 0.3rem 0;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   color: white;
-  background-color: rgba(255, 255, 255, 0.02);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .cameraItem:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.05);
   transform: translateX(5px);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .cameraItem.selected {
-  background-color: #007bff;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  background: linear-gradient(45deg, #00ff00, #00cc00);
+  color: black;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,255,0,0.2);
+  font-weight: 500;
 }
 
 /* 왼쪽 메뉴 안에 표시되는 모드 목록 */
 .modesListInMenu {
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-  margin-top: 0.5rem;
-  border-left: 2px solid rgba(0, 123, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.02);
-  border-radius: 0 4px 4px 0;
+  padding: 0.8rem 0.8rem 0.8rem 2rem;
+  margin-top: 0.8rem;
+  border-left: 2px solid #00ff00;
+  background: rgba(255,255,255,0.02);
+  border-radius: 0 8px 8px 0;
 }
 
 .modesTitle {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.5rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
 }
 
 .modeItemInMenu {
-  padding: 0.5rem 0.75rem;
-  margin: 0.25rem 0;
-  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  margin: 0.3rem 0;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   color: white;
   font-size: 0.9rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .modeItemInMenu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.05);
   transform: translateX(3px);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .modeItemInMenu.selected {
-  background-color: #007bff;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  background: linear-gradient(45deg, #00ff00, #00cc00);
+  color: black;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,255,0,0.2);
+  font-weight: 500;
 }
 
 .details {
-  background: var(--empty-dark);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   min-height: calc(100vh - 300px);
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .detailsTitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   padding-bottom: 1rem;
+  font-weight: 600;
+  font-family: var(--font-pretendard);
 }
 
 /* 탭 메뉴 스타일 */
 .tabMenu {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 0.5rem;
-  border-radius: 8px;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  background: rgba(0,0,0,0.2);
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .tabButton {
   flex: 1;
-  padding: 0.8rem 1rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.2rem;
+  background: rgba(255,255,255,0.03);
   color: white;
-  border: none;
-  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .tabButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
 }
 
 .tabButton.activeTab {
-  background-color: #00ff00;
+  background: linear-gradient(45deg, #00ff00, #00cc00);
   color: black;
-  font-weight: 500;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,255,0,0.2);
 }
 
 .tabContent {
@@ -284,11 +324,12 @@
 }
 
 .sensorDetails {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   flex-grow: 1;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .fovCalculator {
@@ -299,37 +340,41 @@
 
 .detailsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .detailItem {
-  background: var(--empty-dark);
-  padding: 1.2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  background: rgba(255,255,255,0.02);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .detailItem:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .detailItem h4 {
   color: white;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 .detailItem p {
-  margin: 0.5rem 0;
-  color: rgba(255, 255, 255, 0.8);
+  margin: 0.8rem 0;
+  color: rgba(255,255,255,0.8);
   display: flex;
   justify-content: space-between;
+  font-size: 1.1rem;
 }
 
 /* 빈 상태 디자인 */
@@ -339,8 +384,8 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  opacity: 0.7;
-  padding: 2rem;
+  opacity: 0.8;
+  padding: 3rem;
 }
 
 .emptyDetailsContent {
@@ -348,22 +393,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .emptyDetailsContent h2 {
   color: white;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .emptyDetailsContent p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 2rem;
+  font-size: 1.1rem;
 }
 
 .cameraIcon {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -372,7 +419,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
   100% {
     transform: translateY(0px);
@@ -380,39 +427,38 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+  }
+  
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .searchContainer {
+    margin-bottom: 1.5rem;
+  }
+  
+  .searchInput {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
   .content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
   .cameraList {
-    max-height: 500px;
-  }
-  
-  .brandButtons {
-    justify-content: center;
-  }
-
-  .details {
-    min-height: auto;
-  }
-  
-  .tabMenu {
-    flex-direction: row;
-  }
-  
-  .detailsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
+    max-height: 400px;
     padding: 1rem;
   }
   
-  .title {
-    font-size: 1.8rem;
+  .brandButtons {
+    padding: 0.8rem;
+    gap: 0.5rem;
   }
   
   .brandButton {
@@ -420,8 +466,222 @@
     font-size: 0.9rem;
   }
   
+  .selectedBrandTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .lineHeader {
+    padding: 0.8rem 1rem;
+  }
+  
+  .lineTitle {
+    font-size: 1.1rem;
+  }
+  
+  .cameraItem {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .modesListInMenu {
+    padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+  }
+  
+  .modeItemInMenu {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .details {
+    padding: 1.2rem;
+    min-height: auto;
+  }
+  
+  .detailsTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tabMenu {
+    flex-direction: row;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  
   .tabButton {
-    padding: 0.6rem;
+    padding: 0.8rem;
     font-size: 0.9rem;
+  }
+  
+  .sensorDetails {
+    padding: 1.2rem;
+  }
+  
+  .detailsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .detailItem {
+    padding: 1.2rem;
+  }
+  
+  .detailItem h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .detailItem p {
+    font-size: 1rem;
+    margin: 0.6rem 0;
+  }
+  
+  .emptyDetails {
+    padding: 2rem 1rem;
+  }
+  
+  .emptyDetailsContent h2 {
+    font-size: 1.8rem;
+  }
+  
+  .emptyDetailsContent p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .searchInput {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  .cameraList {
+    max-height: 350px;
+    padding: 0.8rem;
+  }
+  
+  .brandButtons {
+    padding: 0.6rem;
+  }
+  
+  .brandButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .selectedBrandTitle {
+    font-size: 1.3rem;
+  }
+  
+  .lineHeader {
+    padding: 0.7rem 0.8rem;
+  }
+  
+  .lineTitle {
+    font-size: 1rem;
+  }
+  
+  .cameraItem {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .modesListInMenu {
+    padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+  }
+  
+  .modeItemInMenu {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.8rem;
+  }
+  
+  .details {
+    padding: 1rem;
+  }
+  
+  .detailsTitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .tabMenu {
+    padding: 0.4rem;
+    gap: 0.4rem;
+  }
+  
+  .tabButton {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .sensorDetails {
+    padding: 1rem;
+  }
+  
+  .detailItem {
+    padding: 1rem;
+  }
+  
+  .detailItem h4 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .detailItem p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+  
+  .emptyDetails {
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .emptyDetailsContent h2 {
+    font-size: 1.5rem;
+  }
+  
+  .emptyDetailsContent p {
+    font-size: 0.9rem;
+  }
+  
+  .cameraIcon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* 세로 모드에서의 스크롤 개선 */
+@media (max-height: 600px) {
+  .cameraList {
+    max-height: 300px;
+  }
+  
+  .details {
+    min-height: auto;
+  }
+}
+
+/* 가로 모드에서의 레이아웃 개선 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .content {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .cameraList {
+    max-height: 500px;
+  }
+  
+  .details {
+    min-height: 500px;
   }
 }

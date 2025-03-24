@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Home.module.css'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faRuler, faLightbulb, faArrowRight, faFileSignature, faClock } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faRuler, faLightbulb, faArrowRight, faFileSignature, faClock, faCrown } from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
     const navigate = useNavigate()
@@ -25,7 +25,13 @@ const Home = () => {
             description: 'Calculate estimated render times for your projects.',
             path: '/render-calculator',
             icon: faClock
-        }
+        },
+        // {
+        //     title: 'Remove Ads',
+        //     description: 'Get premium features and remove ads with Pro subscription.',
+        //     path: '/purchase',
+        //     icon: faCrown
+        // }
     ];
 
     return (

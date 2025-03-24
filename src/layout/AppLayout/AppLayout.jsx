@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './AppLayout.module.css'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 const AppLayout = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const isActive = (path) => {
         return location.pathname === path;
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
     };
 
     return (
@@ -46,16 +51,48 @@ const AppLayout = () => {
                             Plugins
                         </p>
                     </div>
+                    <div className={styles.mobile_menu_button} onClick={toggleMobileMenu}>
+                        <div className={`${styles.hamburger} ${mobileMenuOpen ? styles.active : ''}`}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
                     <div className={styles.login_btn_wrap}>
                         <p onClick={() => navigate('/login')}>Login</p>
                     </div>
                 </div>
             </div>
+            
+            <div className={`${styles.mobile_menu} ${mobileMenuOpen ? styles.open : ''}`}>
+                <p 
+                    className={isActive('/') ? styles.active : ''} 
+                    onClick={() => { navigate('/'); toggleMobileMenu(); }}
+                >
+                    Home
+                </p>
+                <p 
+                    className={isActive('/camera-database') ? styles.active : ''} 
+                    onClick={() => { navigate('/camera-database'); toggleMobileMenu(); }}
+                >
+                    Cameras
+                </p>
+                <p 
+                    className={isActive('/plugins') ? styles.active : ''} 
+                    onClick={() => { navigate('/plugins'); toggleMobileMenu(); }}
+                >
+                    Plugins
+                </p>
+                <p onClick={() => { navigate('/login'); toggleMobileMenu(); }}>
+                    Login
+                </p>
+            </div>
+            
             <main className={styles.main_content}>
                 <Outlet />
             </main>
             <div className={styles.footer_wrap}>
-                <p>© 2025 HEIMLICH. All rights reserved.</p>
+                <p>© 2025 HEIMLICH. All rights reserved. Created by <a className={styles.hyper_link_footer} href="https://instagram.com/zeonjiho" target="_blank" rel="noopener noreferrer"> @zeonjiho</a></p>
             </div>
         </div>
     )

@@ -76,7 +76,7 @@
 .featureIconContainer {
     width: 48px;
     height: 48px;
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(59, 246, 112, 0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -86,7 +86,7 @@
 
 .featureIconContainer svg {
     font-size: 24px;
-    color: #3b82f6;
+    color: var(--primary-color);
 }
 
 .featureTitle {
@@ -107,7 +107,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #3b82f6;
+    color: var(--primary-color);
     font-weight: 500;
     font-size: 14px;
 }
@@ -155,7 +155,7 @@
 }
 
 .footerLinks a:hover {
-    color: #3b82f6;
+    color: var(--primary-color);
 }
 
 /* Mobile */

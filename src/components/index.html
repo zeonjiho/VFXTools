@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AEFX Filename Converter</title>
+    <!-- Google Fonts 불러오기 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Inter, Source Code Pro, Archivo 폰트 포함 -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Inter:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>AEFX FILENAME CONVERTER</h2>
+        
+        <div class="centered-small-text-header">
+            Filename converter and generator for VFX pipeline, based on Netflix naming conventions.
+        </div>
+        
+        <div class="version-info">Alpha 1.2.0</div>
+        
+        <!--<div id="template-example">
+            Example: &lt;projectName&gt;_&lt;product&gt;_&lt;cutName&gt;_&lt;colorspace&gt;_&lt;xResolution&gt;x&lt;yResolution&gt;_&lt;productType&gt;_&lt;founder&gt;_&lt;versionState&gt;_&lt;version&gt;.####
+        </div> -->
+        <!-- 체크박스 컨테이너 -->
+        <div id="checkbox-toggle-container">
+            <button id="toggle-checkboxes" class="toggle-button">Form Setting</button>
+            <div id="checkbox-container" class="checkbox-container hidden">
+        <label><input type="checkbox" id="include-projectName" checked disabled> Project Name</label>
+        <label><input type="checkbox" id="include-product" checked disabled> Product</label>
+        <label><input type="checkbox" id="include-cutName" checked disabled> Cut Name</label>
+        <label><input type="checkbox" id="include-colorspace" checked> Color Space</label>
+        <label><input type="checkbox" id="include-resolution" checked> Resolution</label>
+        <label><input type="checkbox" id="include-productType" checked> Product Type</label>
+        <label><input type="checkbox" id="include-founder"> Founder</label>
+        <label><input type="checkbox" id="include-versionState" checked> Version State</label>
+        <label><input type="checkbox" id="include-version" checked> Version</label>
+        <label><input type="checkbox" id="include-frameNumber"> Frame Number Length</label>
+    </div>
+</div>
+
+        <!-- 프리셋 버튼 -->
+        <div id="preset-buttons">
+            <div class="presets-container" id="presets-container">
+                <!-- 프리셋 버튼이 동적으로 추가됩니다 -->
+            </div>
+            <div id="add-remove-buttons">
+                <button class="add-remove-button" id="add-preset-button">+</button>
+                <button class="add-remove-button" id="remove-preset-button">-</button>
+            </div>
+            <div id="preset-message"></div> <!-- 메시지 표시 영역 -->
+        </div>
+        
+        <!-- 폼 컨테이너 -->
+        <div class="form-container">
+            
+
+            <!-- 입력 필드 -->
+            <div class="input-group" id="group-projectName">
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" placeholder="Enter project name" pattern="[A-Za-z0-9_()* ]+" title="영어, 숫자 및 특수문자 (_, *, ())만 입력 가능합니다.">
+            </div>
+    
+            <div class="input-group" id="group-product">
+                <label for="product">Product</label>
+                <input type="text" id="product" placeholder="Enter product name" pattern="[A-Za-z0-9_()* ]+" title="영어, 숫자 및 특수문자 (_, *, ())만 입력 가능합니다.">
+            </div>
+    
+            <div class="input-group" id="group-cutName">
+                <label for="cut_name">Cut Name</label>
+                <input type="text" id="cut_name" placeholder="Enter cut name" pattern="[A-Za-z0-9_()* ]+" title="영어, 숫자 및 특수문자 (_, *, ())만 입력 가능합니다.">
+            </div>
+    
+            <div class="input-group" id="group-colorspace">
+                <label for="colorspace">Color Space</label>
+                <select id="colorspace">
+                    <option value="srgb">sRGB</option>
+                    <option value="rec709">Rec. 709</option>
+                    <option value="acescg">ACEScg</option>
+                    <option value="ap0">AP0</option>
+                    <option value="ap1">AP1</option>
+                    <option value="dcip3">DCI-P3</option>
+                    <option value="logC3">ARRI LogC3</option>
+                    <option value="logC4">ARRI LogC4</option>
+                    <option value="slog3">Sony S-Log3 - S-Gamut3</option>
+                    <option value="slog3-V-Cine">Sony S-Log3 - S-Gamut3.Cine</option>
+                    <option value="slog3">Sony S-Log3 - Venice S-Gamut3</option>
+                    <option value="slog3-V-Cine">Sony S-Log3 - Venice S-Gamut3.Cine</option>
+                    <option value="redwide">REDWideGamutRGB</option>
+                    <option value="REDLog3G10">Red Log3G10</option>
+                    <option value="linear">Linear</option>
+                    <option value="raw">Raw</option>
+                </select>
+            </div>
+    
+            <!-- Resolution 필드 그룹 -->
+            <div class="input-group resolution-group" id="group-resolution">
+                <label for="x_resolution">Resolution</label>
+                <div class="resolution-inputs">
+                    <input type="number" id="x_resolution" placeholder="Width (x)" min="0">
+                    <span>x</span>
+                    <input type="number" id="y_resolution" placeholder="Height (y)" min="0">
+                </div>
+            </div>
+    
+            <div class="input-group" id="group-productType">
+                <label for="product_type">Product Type</label>
+                <select id="product_type">
+                    <option value="cgi">CGI</option>
+                    <option value="comp">Comp</option>
+                    <option value="ai">AI</option>
+                </select>
+            </div>
+    
+            <div class="input-group" id="group-founder">
+                <label for="founder">Founder</label>
+                <input type="text" id="founder" placeholder="Enter founder's name" pattern="[A-Za-z ]+" title="영어만 입력 가능합니다.">
+            </div>
+    
+            <div class="input-group" id="group-versionState">
+                <label for="version-state">Version State</label>
+                <select id="version-state">
+                    <option value="prev">Preview</option>
+                    <option value="final">Final</option>
+                </select>
+            </div>
+    
+            <div class="input-group" id="group-version">
+                <label for="version">Version</label>
+                <input type="number" id="version" placeholder="Enter version number" min="1" value="1">
+            </div>
+    
+            <div class="input-group" id="group-frameNumber">
+                <label for="frame-number">Frame Number Length</label>
+                <input type="number" id="frame-number" min="4" value="4">
+            </div>
+        </div>
+
+        <!-- 변환 및 리셋 버튼 -->
+        <div id="convert-button-container">
+            <button id="save-preset-button" onclick="saveCurrentToPreset()">Save Preset</button>
+            <button id="convert-button" onclick="convertAndCopy()">Convert &amp; Copy</button>
+            <button class="reset-button" onclick="resetCurrentPreset()">Reset Preset</button>
+            <button class="reset-button" onclick="resetAllData()">Reset All</button>
+        </div>
+        
+      
+<div class="preset-manager">
+  <div class="preset-controls">
+    <button id="exportAllPresets">Export All Presets</button>
+    <button id="importPresets">Import All Presets</button>
+    <input type="file" id="importInput" accept=".json" style="display: none;">
+  </div>
+  
+  <div class="export-dialog" id="exportDialog" style="display: none;">
+    <div class="dialog-content">
+      <h3>Save Preset File</h3>
+      <input type="text" id="presetFileName" placeholder="Enter to File Name">
+      <div class="dialog-buttons">
+        <button id="confirmExport">Export</button>
+        <button id="cancelExport">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- 결과 컨테이너 -->
+        <div id="result-container">
+            <div id="result"></div>
+            <div id="copy-message">복사가 완료되었습니다</div>
+        </div>
+    </div>
+
+    <!-- 테마 토글 버튼 -->
+    <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+        <!-- 텍스트는 동적으로 업데이트됩니다 -->
+    </button>
+    
+    <div class="centered-small-text">
+        ⓒ 2024. <a href="https://www.instagram.com/zeonjiho/" class="bold-link">@zeonjiho</a> All rights reserved.
+        <a href="https://github.com/zeonjiho/AEFX_FILENAME_CONVERTER" class="bold-link">GitHub</a>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

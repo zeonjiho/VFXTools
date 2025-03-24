@@ -1,0 +1,120 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.plansContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.planCard {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.planCard:hover {
+    transform: translateY(-5px);
+}
+
+.popular {
+    border: 2px solid #007bff;
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.planName {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.price {
+    margin-bottom: 2rem;
+}
+
+.amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.period {
+    color: #666;
+    font-size: 1rem;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    color: #666;
+}
+
+.checkIcon {
+    color: #28a745;
+    margin-right: 0.5rem;
+}
+
+.purchaseButton {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background: #f8f9fa;
+    color: #333;
+}
+
+.popularButton {
+    background: #007bff;
+    color: white;
+}
+
+.purchaseButton:hover {
+    background: #e9ecef;
+}
+
+.popularButton:hover {
+    background: #0056b3;
+} 
