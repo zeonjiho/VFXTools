@@ -84,6 +84,12 @@ const AppLayout = () => {
                     Cameras
                 </p>
                 <p 
+                    className={isActive('/filename-generator') ? styles.active : ''} 
+                    onClick={() => { navigate('/filename-generator'); toggleMobileMenu(); }}
+                >
+                    Filename Generator
+                </p>
+                <p 
                     className={isActive('/plugins') ? styles.active : ''} 
                     onClick={() => { navigate('/plugins'); toggleMobileMenu(); }}
                 >

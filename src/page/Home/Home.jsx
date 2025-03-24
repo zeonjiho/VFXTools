@@ -17,7 +17,7 @@ const Home = () => {
         {
             title: 'File Name Generator',
             description: 'Generate standardized file names for your media files.',
-            path: '/file-name-generator',
+            path: '/filename-generator',
             icon: faFileSignature
         },
         {
