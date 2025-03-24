@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Home.module.css'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faRuler, faLightbulb, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faRuler, faLightbulb, faArrowRight, faFileSignature, faClock } from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
     const navigate = useNavigate()
@@ -14,25 +14,25 @@ const Home = () => {
             path: '/camera-database',
             icon: faCamera
         },
-        // {
-        //     title: 'Lens Calculator',
-        //     description: 'Calculate field of view based on focal length and sensor size.',
-        //     path: '/lens-calculator',
-        //     icon: faRuler
-        // },
-        // {
-        //     title: 'Lighting Calculator',
-        //     description: 'Calculate lighting setups and exposure values.',
-        //     path: '/lighting-calculator',
-        //     icon: faLightbulb
-        // }
+        {
+            title: 'File Name Generator',
+            description: 'Generate standardized file names for your media files.',
+            path: '/file-name-generator',
+            icon: faFileSignature
+        },
+        {
+            title: 'Render Time Calculator',
+            description: 'Calculate estimated render times for your projects.',
+            path: '/render-calculator',
+            icon: faClock
+        }
     ];
 
     return (
         <div className={styles.container}>
             <header className={styles.header}>
                 <div className={styles.headerContent}>
-                    <h1 className={styles.title}>VFX Wiki</h1>
+                    <h1 className={styles.title}>for lovers of Arts</h1>
                     <p className={styles.subtitle}>All-in-one toolkit for film and video production</p>
                 </div>
             </header>
@@ -59,17 +59,6 @@ const Home = () => {
                     ))}
                 </div>
             </main>
-
-            <footer className={styles.footer}>
-                <div className={styles.footerContent}>
-                    <p className={styles.copyright}>© 2024 VFX Wiki. All rights reserved.</p>
-                    <div className={styles.footerLinks}>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Privacy</a>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }
