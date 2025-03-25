@@ -1,112 +1,149 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import styles from './AppLayout.module.css'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCog, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+
+// 사이드바 컨텍스트 생성
+export const SidebarContext = createContext();
+
+export const useSidebar = () => useContext(SidebarContext);
 
 const AppLayout = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
+    // 사이드바 상태 관리
+    const [rightSidebarContent, setRightSidebarContent] = useState(null);
+    const [rightSidebarVisible, setRightSidebarVisible] = useState(false);
+    const [rightSidebarTitle, setRightSidebarTitle] = useState('');
+    
+    // 사이드바 토글 함수
+    const toggleRightSidebar = () => {
+        setRightSidebarVisible(prev => !prev);
+    };
 
     const isActive = (path) => {
         return location.pathname === path;
     };
 
-    const toggleMobileMenu = () => {
-        setMobileMenuOpen(!mobileMenuOpen);
-    };
-
     return (
-        <div className={styles.super_wrap}>
-            <div className={styles.color_wrap}>
-                <div className={styles.wrap}>
-                    <div className={styles.logo_wrap}>
-                        <h1 onClick={() => navigate('/')}>Arts</h1>
-                        <div className={styles.powered_wrap}>
-                            <p>Powered by <a className={styles.hyper_link} href="https://hyper.bz" target="_blank" rel="noopener noreferrer"> HYPER</a></p>
+        <SidebarContext.Provider value={{ 
+            setRightSidebarContent, 
+            setRightSidebarVisible, 
+            setRightSidebarTitle,
+            rightSidebarVisible
+        }}>
+            <div className={styles.layout}>
+                {/* 왼쪽 사이드바 */}
+                <nav className={styles.sidebar}>
+                    <div className={styles.sidebarHeader}>
+                        <div className={styles.logoSection}>
+                            <h1 onClick={() => navigate('/')}>Arts</h1>
+                            <div className={styles.logoSubtitle}>
+                                Studio
+                            </div>
+                        </div>
+
+                        <div className={styles.poweredBy}>
+                            <p>by <a href="https://hyper.bz" target="_blank" rel="noopener noreferrer">HYPER</a></p>
                         </div>
                     </div>
-                    <div className={styles.nav_wrap}>
-                        <p 
-                            className={isActive('/') ? styles.active : ''} 
+
+                    <div className={styles.navLinks}>
+                        <div 
+                            className={`${styles.navItem} ${isActive('/') ? styles.active : ''}`}
                             onClick={() => navigate('/')}
                         >
                             Home
-                        </p>
-                        <p 
-                            className={isActive('/camera-database') ? styles.active : ''} 
+                        </div>
+                        <div 
+                            className={`${styles.navItem} ${isActive('/camera-database') ? styles.active : ''}`}
                             onClick={() => navigate('/camera-database')}
                         >
                             Cameras
-                        </p>
-                        <p 
-                            className={isActive('/filename-generator') ? styles.active : ''} 
+                        </div>
+                        <div 
+                            className={`${styles.navItem} ${isActive('/filename-generator') ? styles.active : ''}`}
                             onClick={() => navigate('/filename-generator')}
                         >
                             Filename Generator
-                        </p>
-                        {/* <p 
-                            className={isActive('/lens-calculator') ? styles.active : ''} 
-                            onClick={() => navigate('/lens-calculator')}
+                        </div>
+
+                        <div className={`${styles.navItem} ${isActive('/svg23d') ? styles.active : ''}`}
+                            onClick={() => navigate('/svg23d')}
                         >
-                            Lens Calculator
-                        </p> */}
-                        <p 
-                            className={isActive('/plugins') ? styles.active : ''} 
+                            SVG23D
+                        </div>
+                        <div className={`${styles.navItem} ${isActive('/color-palette') ? styles.active : ''}`}
+                            onClick={() => navigate('/color-palette')}
+                        >
+                            Color Palette
+                        </div>
+
+
+-
+
+
+                        <div 
+                            className={`${styles.navItem} ${isActive('/plugins') ? styles.active : ''}`}
                             onClick={() => navigate('/plugins')}
                         >
                             Plugins
-                        </p>
-                    </div>
-                    <div className={styles.mobile_menu_button} onClick={toggleMobileMenu}>
-                        <div className={`${styles.hamburger} ${mobileMenuOpen ? styles.active : ''}`}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
                         </div>
                     </div>
-                    <div className={styles.login_btn_wrap}>
-                        <p onClick={() => navigate('/login')}>Login</p>
+
+                    <div className={styles.sidebarFooter}>
+                        <button className={styles.settingsButton}>
+                            <FontAwesomeIcon icon={faCog} />
+                            <span>Settings</span>
+                        </button>
                     </div>
+                </nav>
+
+                {/* 메인 컨텐츠 영역 */}
+                <div className={`${styles.mainContainer} ${rightSidebarVisible ? styles.withSidebar : ''}`}>
+                    {/* 상단 헤더 */}
+                    <header className={styles.header}>
+                        <div className={styles.headerContent}>
+                            <div className={styles.searchBar}>
+                                {/* 검색바 구현 예정 */}
+                            </div>
+                            <div className={styles.userSection}>
+                                <button className={styles.profileButton} onClick={() => navigate('/login')}>
+                                    <FontAwesomeIcon icon={faUser} />
+                                    <span>Login</span>
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* 메인 컨텐츠 */}
+                    <main className={styles.mainContent}>
+                        <Outlet />
+                    </main>
+
+                    {/* 푸터 */}
+                    <footer className={styles.footer}>
+                        <p>© 2025 HEIMLICH. All rights reserved. Created by <a href="https://instagram.com/zeonjiho" target="_blank" rel="noopener noreferrer">@zeonjiho</a></p>
+                    </footer>
                 </div>
+
+                {/* 오른쪽 사이드바 */}
+                <aside className={`${styles.rightSidebar} ${rightSidebarVisible ? styles.visible : ''}`}>
+                    {rightSidebarVisible && (
+                        <>
+                            <div className={styles.rightSidebarHeader}>
+                                <h3>{rightSidebarTitle || '사이드바'}</h3>
+                            </div>
+                            <div className={styles.rightSidebarContent}>
+                                {rightSidebarContent}
+                            </div>
+                        </>
+                    )}
+                </aside>
             </div>
-            
-            <div className={`${styles.mobile_menu} ${mobileMenuOpen ? styles.open : ''}`}>
-                <p 
-                    className={isActive('/') ? styles.active : ''} 
-                    onClick={() => { navigate('/'); toggleMobileMenu(); }}
-                >
-                    Home
-                </p>
-                <p 
-                    className={isActive('/camera-database') ? styles.active : ''} 
-                    onClick={() => { navigate('/camera-database'); toggleMobileMenu(); }}
-                >
-                    Cameras
-                </p>
-                <p 
-                    className={isActive('/filename-generator') ? styles.active : ''} 
-                    onClick={() => { navigate('/filename-generator'); toggleMobileMenu(); }}
-                >
-                    Filename Generator
-                </p>
-                <p 
-                    className={isActive('/plugins') ? styles.active : ''} 
-                    onClick={() => { navigate('/plugins'); toggleMobileMenu(); }}
-                >
-                    Plugins
-                </p>
-                <p onClick={() => { navigate('/login'); toggleMobileMenu(); }}>
-                    Login
-                </p>
-            </div>
-            
-            <main className={styles.main_content}>
-                <Outlet />
-            </main>
-            <div className={styles.footer_wrap}>
-                <p>© 2025 HEIMLICH. All rights reserved. Created by <a className={styles.hyper_link_footer} href="https://instagram.com/zeonjiho" target="_blank" rel="noopener noreferrer"> @zeonjiho</a></p>
-            </div>
-        </div>
+        </SidebarContext.Provider>
     )
 }
 

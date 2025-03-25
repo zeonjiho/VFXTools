@@ -12,11 +12,12 @@
 }
 
 :root {
-  --main-back-dark: #121212;
-  --empty-dark: #1a1a1a;
+  --main-back-dark: #000000;
+  --empty-dark: #000000;
   --font-syne: 'Syne', sans-serif;
   --font-lora: 'Lora', serif;
-  --primary-color: #00ff00;
+  --primary-color: #6dff40;
+  --background-secondary: #0f0f0f;
 }
 
 body {

@@ -1,0 +1,386 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  font-family: var(--font-lora);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.settingItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.05);
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.settingItem label {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.settingItem input[type="range"] {
+  width: 150px;
+  height: 5px;
+  -webkit-appearance: none;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  outline: none;
+}
+
+.settingItem input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #00ff00;
+  cursor: pointer;
+}
+
+.settingItem span {
+  color: white;
+  font-size: 0.9rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.leftSection, .rightSection {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.uploadSection {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadArea {
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-grow: 1;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+.uploadArea:hover {
+  border-color: #00ff00;
+  background-color: rgba(0,255,0,0.05);
+}
+
+.uploadIcon {
+  font-size: 2.5rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+}
+
+.uploadArea p {
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.fileName {
+  background: rgba(0,255,0,0.1);
+  color: #00ff00;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.imageActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.resetButton {
+  background: rgba(255,0,0,0.1);
+  color: white;
+  border: 1px solid rgba(255,0,0,0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.resetButton:hover {
+  background: rgba(255,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.paletteContainer {
+  padding: 1.5rem;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.paletteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.paletteHeader h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.saveButton {
+  background: rgba(0,255,0,0.1);
+  color: #00ff00;
+  border: 1px solid rgba(0,255,0,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.saveButton:hover {
+  background: rgba(0,255,0,0.2);
+  transform: translateY(-2px);
+}
+
+.paletteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.colorItem {
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+.colorItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.colorInfo {
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  padding: 0.8rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.colorHex {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.colorRgb {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.copyButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.copyButton:hover {
+  opacity: 1;
+}
+
+.copiedIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00ff00;
+  animation: fadeIn 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.paletteHint {
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.emptyPalette {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255,255,255,0.5);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.emptyPalette p {
+  font-size: 1.1rem;
+}
+
+.loadingSpinner {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.success {
+  background: rgba(0,255,0,0.2);
+  border: 1px solid #00ff00;
+  color: #00ff00;
+}
+
+.error {
+  background: rgba(255,0,0,0.2);
+  border: 1px solid #ff0000;
+  color: #ff6b6b;
+}
+
+.info {
+  background: rgba(0,100,255,0.2);
+  border: 1px solid #0064ff;
+  color: #66a6ff;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .uploadArea {
+    min-height: 200px;
+  }
+  
+  .paletteGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  
+  .colorItem {
+    height: 100px;
+  }
+} 
