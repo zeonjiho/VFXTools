@@ -1,8 +1,272 @@
 import React, { useState, useEffect } from 'react';
 import styles from './CameraDatabase.module.css';
 import sensorData from '../../data/sensors.json';
-import FOVCalculator from '../../components/FOVCalculator';
+import FOVVisualizer from '../../components/FOVVisualizer';
+import { useSidebar } from '../../layout/AppLayout/AppLayout';
 
+// 카메라 모델 리스트 사이드바 컴포넌트
+const CameraModelSidebar = ({ 
+  cameraData, 
+  searchTerm,
+  setSearchTerm,
+  brands, 
+  selectedBrand, 
+  onBrandSelect,
+  expandedLines, 
+  expandedModels,
+  selectedCamera, 
+  selectedMode,
+  toggleLine, 
+  toggleModel,
+  handleModeSelect,
+  organizedCameras
+}) => {
+  return (
+    <div className={styles.sidebarContent}>
+      {/* 검색창 */}
+      <div className={styles.searchContainer}>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Search camera model..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      {/* 브랜드 버튼 */}
+      <div className={styles.brandButtons}>
+        {brands.length === 0 ? (
+          <div className={styles.noResults}>No results found</div>
+        ) : (
+          brands.map(brand => (
+            <button
+              key={brand}
+              className={`${styles.brandButton} ${selectedBrand === brand ? styles.selected : ''}`}
+              onClick={() => onBrandSelect(brand)}
+            >
+              {brand}
+            </button>
+          ))
+        )}
+      </div>
+      
+      {/* 선택된 브랜드의 카메라 모델 목록 */}
+      {selectedBrand && (
+        <div className={styles.selectedBrandContent}>
+          <h2 className={styles.selectedBrandTitle}>{selectedBrand}</h2>
+          
+          {/* Camera lines and models */}
+          {Object.entries(organizedCameras).map(([line, models]) => (
+            <div key={`${selectedBrand}-${line}`} className={styles.lineSection}>
+              <div 
+                className={styles.lineHeader}
+                onClick={() => toggleLine(selectedBrand, line)}
+              >
+                <h3 className={styles.lineTitle}>{line}</h3>
+                <span className={`${styles.arrow} ${expandedLines[`${selectedBrand}-${line}`] ? styles.expanded : ''}`}>
+                  &#9660;
+                </span>
+              </div>
+              
+              {expandedLines[`${selectedBrand}-${line}`] && (
+                <div className={styles.modelList}>
+                  {Object.keys(models).map((model) => (
+                    <div key={model} className={styles.modelSection}>
+                      <div
+                        className={`${styles.cameraItem} ${
+                          selectedCamera?.brand === selectedBrand && selectedCamera?.model === model
+                            ? styles.selected
+                            : ''
+                        }`}
+                        onClick={() => toggleModel(selectedBrand, model)}
+                      >
+                        {model}
+                      </div>
+                      
+                      {/* Mode list for selected model */}
+                      {selectedCamera?.brand === selectedBrand && 
+                       selectedCamera?.model === model && 
+                       cameraData[selectedBrand][model]["sensor dimensions"] && (
+                        <div className={styles.modesListInMenu}>
+                          <p className={styles.modesTitle}>Select Resolution:</p>
+                          {Object.keys(cameraData[selectedBrand][model]["sensor dimensions"]).map((mode) => (
+                            <div
+                              key={mode}
+                              className={`${styles.modeItemInMenu} ${
+                                selectedMode === mode ? styles.selected : ''
+                              }`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleModeSelect(mode);
+                              }}
+                            >
+                              {mode}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// 센서 정보 컴포넌트
+const SensorInfoSection = ({ sensorData, selectedCamera, selectedMode }) => {
+  if (!sensorData) {
+    return (
+      <div className={styles.emptySection}>
+        <p>Select a camera to view sensor information</p>
+      </div>
+    );
+  }
+  
+  return (
+    <div className={styles.sensorInfoSection}>
+      <h2 className={styles.sectionTitle}>Sensor Information</h2>
+      
+      <div className={styles.cameraHeader}>
+        <h3>{selectedCamera.brand} {selectedCamera.model}</h3>
+        <div className={styles.modeDisplay}>Resolution: {selectedMode}</div>
+      </div>
+      
+      <div className={styles.sensorGrid}>
+        <div className={styles.sensorItem}>
+          <h4>Resolution</h4>
+          {sensorData.resolution &&
+            sensorData.resolution.width && (
+              <p>
+                {sensorData.resolution.width} × {sensorData.resolution.height}
+              </p>
+            )}
+        </div>
+        
+        <div className={styles.sensorItem}>
+          <h4>Sensor Size (mm)</h4>
+          <p>Width: {sensorData.mm.width}</p>
+          <p>Height: {sensorData.mm.height}</p>
+          <p>Diagonal: {sensorData.mm.diagonal}</p>
+        </div>
+        
+        <div className={styles.sensorItem}>
+          <h4>Sensor Size (inches)</h4>
+          <p>Width: {sensorData.inches.width}"</p>
+          <p>Height: {sensorData.inches.height}"</p>
+          <p>Diagonal: {sensorData.inches.diagonal}"</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// FOV 제어 컴포넌트
+const FOVControlSection = ({ focalLength, setFocalLength, distance, setDistance }) => {
+  if (!focalLength || !setFocalLength || !distance || !setDistance) {
+    return (
+      <div className={styles.emptySection}>
+        <p>Select a camera to control FOV</p>
+      </div>
+    );
+  }
+  
+  return (
+    <div className={styles.fovControlSection}>
+      <h2 className={styles.sectionTitle}>FOV Control</h2>
+      
+      <div className={styles.controlsGrid}>
+        {/* Focal Length Control */}
+        <div className={styles.controlGroup}>
+          <div className={styles.controlHeader}>
+            <label>Focal Length (mm)</label>
+            <span>{focalLength} mm</span>
+          </div>
+          
+          <input
+            type="range"
+            min="12"
+            max="300"
+            value={focalLength}
+            onChange={(e) => setFocalLength(Number(e.target.value))}
+            className={styles.slider}
+          />
+          
+          <div className={styles.presetButtons}>
+            {[12, 18, 24, 35, 50, 85, 135, 200].map(fl => (
+              <button
+                key={fl}
+                className={`${styles.presetButton} ${focalLength === fl ? styles.selected : ''}`}
+                onClick={() => setFocalLength(fl)}
+              >
+                {fl}mm
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Distance Control */}
+        <div className={styles.controlGroup}>
+          <div className={styles.controlHeader}>
+            <label>Subject Distance (m)</label>
+            <span>{distance} m</span>
+          </div>
+          
+          <input
+            type="range"
+            min="0.5"
+            max="20"
+            step="0.5"
+            value={distance}
+            onChange={(e) => setDistance(Number(e.target.value))}
+            className={styles.slider}
+          />
+          
+          <div className={styles.presetButtons}>
+            {[1, 2, 3, 5, 10, 15].map(dist => (
+              <button
+                key={dist}
+                className={`${styles.presetButton} ${distance === dist ? styles.selected : ''}`}
+                onClick={() => setDistance(dist)}
+              >
+                {dist}m
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// FOV 시각화 컴포넌트
+const FOVVisualizerSection = ({ sensorWidth, sensorHeight, focalLength, distance }) => {
+  if (!sensorWidth || !sensorHeight) {
+    return (
+      <div className={styles.emptySection}>
+        <p>Select a camera to view FOV visualization</p>
+      </div>
+    );
+  }
+  
+  return (
+    <div className={styles.fovVisualizerSection}>
+      <FOVVisualizer 
+        sensorWidth={sensorWidth}
+        sensorHeight={sensorHeight}
+        focalLength={focalLength}
+        distance={distance}
+      />
+    </div>
+  );
+};
+
+// 메인 컴포넌트
 const CameraDatabase = () => {
   const [cameraData, setCameraData] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,21 +277,75 @@ const CameraDatabase = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [expandedLines, setExpandedLines] = useState({});
   const [expandedModels, setExpandedModels] = useState({});
-  const [activeTab, setActiveTab] = useState('info'); // 'info' or 'fov'
+  const [focalLength, setFocalLength] = useState(50);
+  const [subjectDistance, setSubjectDistance] = useState(3);
+  
+  // 사이드바 컨텍스트 사용
+  const { setRightSidebarContent, setRightSidebarVisible, setRightSidebarTitle } = useSidebar();
+
+  // Get filtered brands based on search
+  const filteredBrands = cameraData 
+    ? Object.keys(cameraData).filter(brand => {
+        if (brand.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return true;
+        }
+        
+        // Check if any model under the brand matches the search term
+        const models = cameraData[brand];
+        return Object.keys(models).some(model => 
+          model.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      })
+    : [];
 
   useEffect(() => {
     try {
       setCameraData(sensorData);
-      // Select first brand as default (if data exists)
       if (Object.keys(sensorData).length > 0) {
         setSelectedBrand(Object.keys(sensorData)[0]);
       }
       setLoading(false);
     } catch (err) {
-      setError("Error loading data.");
+      setError("Failed to load data.");
       setLoading(false);
     }
   }, []);
+
+  // 사이드바에 카메라 목록 컴포넌트 설정
+  useEffect(() => {
+    if (cameraData) {
+      // 현재 선택된 브랜드에 대한 정리된 카메라 데이터 계산
+      const currentOrganizedCameras = selectedBrand ? organizedCameras(cameraData, selectedBrand, searchTerm) : {};
+      
+      const sidebarContent = (
+        <CameraModelSidebar
+          cameraData={cameraData}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          brands={filteredBrands}
+          selectedBrand={selectedBrand}
+          onBrandSelect={handleBrandSelect}
+          expandedLines={expandedLines}
+          expandedModels={expandedModels}
+          selectedCamera={selectedCamera}
+          selectedMode={selectedMode}
+          toggleLine={toggleLine}
+          toggleModel={toggleModel}
+          handleModeSelect={handleModeSelect}
+          organizedCameras={currentOrganizedCameras}
+        />
+      );
+      
+      setRightSidebarContent(sidebarContent);
+      setRightSidebarTitle('카메라 모델');
+      setRightSidebarVisible(true);
+    }
+    
+    // 컴포넌트 언마운트시 사이드바 닫기
+    return () => {
+      setRightSidebarVisible(false);
+    };
+  }, [cameraData, searchTerm, selectedBrand, expandedLines, expandedModels, selectedCamera, selectedMode, filteredBrands]);
 
   // Brand selection function
   const handleBrandSelect = (brand) => {
@@ -57,39 +375,25 @@ const CameraDatabase = () => {
     handleCameraSelect(brand, model);
   };
 
-  // Get filtered brands based on search
-  const filteredBrands = cameraData 
-    ? Object.keys(cameraData).filter(brand => {
-        if (brand.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return true;
-        }
-        
-        // Check if any model under the brand matches the search term
-        const models = cameraData[brand];
-        return Object.keys(models).some(model => 
-          model.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      })
-    : [];
-
   // Filter and group camera models by line for selected brand
-  const organizedCameras = selectedBrand && cameraData && cameraData[selectedBrand]
-    ? (() => {
-        const models = cameraData[selectedBrand];
+  const organizedCameras = (cameraData, selectedBrand, searchTerm) => {
+    if (selectedBrand && cameraData && cameraData[selectedBrand]) {
+      const models = cameraData[selectedBrand];
+      
+      // Filter if search term exists
+      const filteredModels = searchTerm
+        ? Object.keys(models).reduce((acc, model) => {
+            if (model.toLowerCase().includes(searchTerm.toLowerCase())) {
+              acc[model] = models[model];
+            }
+            return acc;
+          }, {})
+        : models;
         
-        // Filter if search term exists
-        const filteredModels = searchTerm
-          ? Object.keys(models).reduce((acc, model) => {
-              if (model.toLowerCase().includes(searchTerm.toLowerCase())) {
-                acc[model] = models[model];
-              }
-              return acc;
-            }, {})
-          : models;
-          
-        return groupModelsByLine(filteredModels);
-      })()
-    : {};
+      return groupModelsByLine(filteredModels);
+    }
+    return {};
+  };
 
   // Function to group camera models by line
   function groupModelsByLine(models) {
@@ -157,181 +461,34 @@ const CameraDatabase = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Camera Sensor Database</h1>
-      
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder="Search by camera brand or model..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-
-      {/* Brand buttons section */}
-      <div className={styles.brandButtons}>
-        {filteredBrands.length === 0 ? (
-          <div className={styles.noResults}>No results found.</div>
-        ) : (
-          filteredBrands.map(brand => (
-            <button
-              key={brand}
-              className={`${styles.brandButton} ${selectedBrand === brand ? styles.selected : ''}`}
-              onClick={() => handleBrandSelect(brand)}
-            >
-              {brand}
-            </button>
-          ))
-        )}
-      </div>
-
-      <div className={styles.content}>
-        {/* Left section: Camera line, model and mode selection */}
-        <div className={styles.cameraList}>
-          {selectedBrand && Object.keys(organizedCameras).length === 0 ? (
-            <div className={styles.noResults}>No results found.</div>
-          ) : selectedBrand && (
-            <div className={styles.selectedBrandContent}>
-              <h2 className={styles.selectedBrandTitle}>{selectedBrand}</h2>
-              
-              {/* Camera lines and models */}
-              {Object.entries(organizedCameras).map(([line, models]) => (
-                <div key={`${selectedBrand}-${line}`} className={styles.lineSection}>
-                  <div 
-                    className={styles.lineHeader}
-                    onClick={() => toggleLine(selectedBrand, line)}
-                  >
-                    <h3 className={styles.lineTitle}>{line}</h3>
-                    <span className={`${styles.arrow} ${expandedLines[`${selectedBrand}-${line}`] ? styles.expanded : ''}`}>
-                      &#9660;
-                    </span>
-                  </div>
-                  
-                  {expandedLines[`${selectedBrand}-${line}`] && (
-                    <div className={styles.modelList}>
-                      {Object.keys(models).map((model) => (
-                        <div key={model} className={styles.modelSection}>
-                          <div
-                            className={`${styles.cameraItem} ${
-                              selectedCamera?.brand === selectedBrand && selectedCamera?.model === model
-                                ? styles.selected
-                                : ''
-                            }`}
-                            onClick={() => toggleModel(selectedBrand, model)}
-                          >
-                            {model}
-                          </div>
-                          
-                          {/* Mode list for selected model */}
-                          {selectedCamera?.brand === selectedBrand && 
-                           selectedCamera?.model === model && 
-                           cameraData[selectedBrand][model]["sensor dimensions"] && (
-                            <div className={styles.modesListInMenu}>
-                              <p className={styles.modesTitle}>Select Resolution:</p>
-                              {Object.keys(cameraData[selectedBrand][model]["sensor dimensions"]).map((mode) => (
-                                <div
-                                  key={mode}
-                                  className={`${styles.modeItemInMenu} ${
-                                    selectedMode === mode ? styles.selected : ''
-                                  }`}
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleModeSelect(mode);
-                                  }}
-                                >
-                                  {mode}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
+      <div className={styles.grid}>
+        {/* 센서 정보 섹션 */}
+        <div className={styles.sensorInfo}>
+          <SensorInfoSection 
+            sensorData={currentSensorData}
+            selectedCamera={selectedCamera}
+            selectedMode={selectedMode}
+          />
         </div>
-
-        {/* Right section: Sensor info and FOV calculator */}
-        <div className={styles.details}>
-          {selectedCamera && selectedMode && currentSensorData ? (
-            <>
-              <h2 className={styles.detailsTitle}>
-                {selectedCamera.brand} {selectedCamera.model} - {selectedMode}
-              </h2>
-              
-              {/* Tab menu */}
-              <div className={styles.tabMenu}>
-                <button 
-                  className={`${styles.tabButton} ${activeTab === 'info' ? styles.activeTab : ''}`}
-                  onClick={() => setActiveTab('info')}
-                >
-                  Sensor Info
-                </button>
-                <button 
-                  className={`${styles.tabButton} ${activeTab === 'fov' ? styles.activeTab : ''}`}
-                  onClick={() => setActiveTab('fov')}
-                >
-                  FOV Calculator
-                </button>
-              </div>
-              
-              {/* Tab content */}
-              <div className={styles.tabContent}>
-                {/* Sensor info tab */}
-                {activeTab === 'info' && (
-                  <div className={styles.sensorDetails}>
-                    <div className={styles.detailsGrid}>
-                      <div className={styles.detailItem}>
-                        <h4>Resolution</h4>
-                        {currentSensorData.resolution &&
-                          currentSensorData.resolution.width && (
-                            <p>
-                              {currentSensorData.resolution.width} x{' '}
-                              {currentSensorData.resolution.height}
-                            </p>
-                          )}
-                      </div>
-                      <div className={styles.detailItem}>
-                        <h4>Sensor Size (mm)</h4>
-                        <p>Width: {currentSensorData.mm.width}</p>
-                        <p>Height: {currentSensorData.mm.height}</p>
-                        <p>Diagonal: {currentSensorData.mm.diagonal}</p>
-                      </div>
-                      <div className={styles.detailItem}>
-                        <h4>Sensor Size (inches)</h4>
-                        <p>Width: {currentSensorData.inches.width}"</p>
-                        <p>Height: {currentSensorData.inches.height}"</p>
-                        <p>Diagonal: {currentSensorData.inches.diagonal}"</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* FOV calculator tab */}
-                {activeTab === 'fov' && (
-                  <div className={styles.fovCalculator}>
-                    {currentSensorData && <FOVCalculator sensorData={currentSensorData} />}
-                  </div>
-                )}
-              </div>
-            </>
-          ) : (
-            <div className={styles.emptyDetails}>
-              <div className={styles.emptyDetailsContent}>
-                <h2>Camera Sensor Information</h2>
-                <p>Select a camera and resolution from the left to view sensor information here.</p>
-                <div className={styles.cameraIcon}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100" height="100">
-                    <path fill="rgba(255,255,255,0.2)" d="M20 4h-3.17L15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h4.05l1.83-2h4.24l1.83 2H20v12zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          )}
+        
+        {/* FOV 제어 섹션 */}
+        <div className={styles.fovControls}>
+          <FOVControlSection 
+            focalLength={focalLength}
+            setFocalLength={setFocalLength}
+            distance={subjectDistance}
+            setDistance={setSubjectDistance}
+          />
+        </div>
+        
+        {/* FOV 시각화 섹션 */}
+        <div className={styles.fovVisualizer}>
+          <FOVVisualizerSection 
+            sensorWidth={currentSensorData?.mm.width}
+            sensorHeight={currentSensorData?.mm.height}
+            focalLength={focalLength}
+            distance={subjectDistance}
+          />
         </div>
       </div>
     </div>

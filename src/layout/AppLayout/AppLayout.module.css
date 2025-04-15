@@ -6,6 +6,19 @@
     overflow: hidden;
 }
 
+/* 스크롤바 숨기기 - 전역 스타일 */
+.sidebar, .mainContent, .rightSidebar, .rightSidebarContent {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sidebar::-webkit-scrollbar, 
+.mainContent::-webkit-scrollbar, 
+.rightSidebar::-webkit-scrollbar, 
+.rightSidebarContent::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
 /* 왼쪽 사이드바 */
 .sidebar {
     width: 280px;
@@ -146,6 +159,28 @@
 .userSection {
     display: flex;
     align-items: center;
+    gap: 10px;
+}
+
+.sidebarToggleButton {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebarToggleButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebarToggleButton.active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .profileButton {
@@ -168,7 +203,7 @@
 /* 메인 컨텐츠 */
 .mainContent {
     flex: 1;
-    padding: 30px 40px 40px 40px;
+    padding: 30px 30px 30px 30px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -176,6 +211,10 @@
     /* border : 1px solid white; */
     border-radius: 1rem;
     background-color: var(--background-secondary);
+}
+
+.mainContent::-webkit-scrollbar {
+    display: none; /* 삭제 */
 }
 
 /* 푸터 */
@@ -204,6 +243,18 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+    position: relative;
+    z-index: 10;
+}
+
+.rightSidebar::-webkit-scrollbar {
+    display: none; /* 삭제 */
+}
+
+.rightSidebar.visible {
+    transform: translateX(0);
 }
 
 .rightSidebarHeader {
@@ -222,10 +273,31 @@
     font-weight: 500;
 }
 
+.closeSidebarButton {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.closeSidebarButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .rightSidebarContent {
     flex: 1;
     overflow-y: auto;
     padding: 20px;
+}
+
+.rightSidebarContent::-webkit-scrollbar {
+    display: none; /* 삭제 */
 }
 
 /* 메인 컨테이너가 사이드바와 함께 있을 때 여백 조정 */
@@ -261,4 +333,35 @@
     .mainContent {
         padding: 20px;
     }
+}
+
+/* 리사이저 스타일 */
+.resizer {
+    width: 8px;
+    height: 100vh;
+    cursor: col-resize;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.resizer:hover, .resizer.isResizing {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.resizerIcon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.resizer:hover .resizerIcon, .resizer.isResizing .resizerIcon {
+    color: rgba(0, 255, 0, 0.8);
 }

@@ -1,5 +1,6 @@
 .container {
-  max-width: 1400px;
+  /* max-width: auto; */
+  width: 100%;
   margin: 0 auto;
   /* padding: 2rem; */
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
@@ -319,6 +320,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin-top: 1rem;
 }
 
 .inputGroup label {
@@ -838,4 +840,767 @@ body {
   background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,20,20,0.8) 100%);
   color: white;
   min-height: 100vh;
+}
+
+/* 메인 콘텐츠 영역 스타일 */
+.mainContentArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "project-section project-section"
+    "preset-section result-section"
+    "preset-manager preset-manager";
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* 프로젝트 섹션 */
+.projectSection {
+  grid-area: project-section;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+/* 프리셋 섹션 */
+.presetSection {
+  grid-area: preset-section;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 결과 섹션 */
+.resultSection {
+  grid-area: result-section;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 프리셋 관리 섹션 */
+.presetManagerSection {
+  grid-area: preset-manager;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+/* 섹션 헤더 */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  color: var(--neon-green);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 프리셋 카드 스타일 */
+.presetCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  padding: 10px;
+  height: calc(100vh - 250px);
+  min-height: 300px;
+  width: 100%;
+}
+
+.presetCard {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: all 0.15s ease;
+  cursor: grab;
+  height: 100%;
+  user-select: none;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.presetCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.activePreset {
+  background: linear-gradient(45deg, rgba(0,255,0,0.1), rgba(0,255,0,0.05));
+  border: 1px solid rgba(0,255,0,0.3);
+  box-shadow: 0 5px 15px rgba(0,255,0,0.1);
+}
+
+.presetCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.presetNumber {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+}
+
+.presetTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--neon-green);
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activeIndicator {
+  font-size: 0.8rem;
+  background: var(--neon-green);
+  color: black;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.presetCardContent {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.presetDataRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.presetDataLabel {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+.presetDataValue {
+  color: white;
+  font-weight: 600;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 프리셋 컨트롤 버튼 */
+.presetControls {
+  display: flex;
+  gap: 8px;
+}
+
+.addPresetButton, .removePresetButton {
+  background: rgba(0,255,0,0.1);
+  color: var(--neon-green);
+  border: 1px solid rgba(0,255,0,0.2);
+  border-radius: 8px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.addPresetButton:hover {
+  background: rgba(0,255,0,0.2);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,255,0,0.2);
+  transform: translateY(-2px);
+}
+
+.addPresetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 결과 컨테이너 */
+.resultBox {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  padding: 15px;
+  position: relative;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultContent {
+  font-family: monospace;
+  color: white;
+  word-break: break-all;
+  text-align: center;
+  padding: 10px;
+}
+
+.copyMessageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,255,0,0.1);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-green);
+  font-weight: 600;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.emptyResult {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  padding: 20px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  font-style: italic;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 프리셋 관리자 버튼 */
+.presetManagerControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.presetManagerButton {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.presetManagerButton:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 사이드바 폼 컨테이너 */
+.sidebarFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebarTitle {
+  font-size: 1.2rem;
+  color: var(--neon-green);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebarIcon {
+  color: var(--neon-green);
+}
+
+.settingsToggle {
+  margin-bottom: 15px;
+}
+
+.sidebarButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 1024px) {
+  .mainContentArea {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "project-section"
+      "preset-section"
+      "result-section"
+      "preset-manager";
+  }
+}
+
+@media (max-width: 576px) {
+  .presetCardsContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .presetManagerControls {
+    flex-direction: column;
+  }
+  
+  .presetManagerButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 새로운 레이아웃 스타일 */
+.topControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.projectWrapper {
+  flex: 0 0 300px;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  max-height: 300px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.presetManagerWrapper {
+  flex: 1;
+  min-width: 320px;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.resultWrapper {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  background: var(--glass-bg);
+  border-radius: 12px;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.controlHeader {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.controlTitle {
+  font-size: 1.1rem;
+  color: var(--neon-green);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* 프리셋 섹션 스타일 수정 */
+.presetsSection {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  min-height: calc(100vh - 300px);
+  display: flex;
+  flex-direction: column;
+}
+
+.presetsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.presetTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.projectIndicator {
+  font-size: 0.9rem;
+  color: var(--neon-green);
+  opacity: 0.8;
+}
+
+.presetControls {
+  display: flex;
+  gap: 10px;
+}
+
+.addPresetButton, .removePresetButton {
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.addPresetButton {
+  background: rgba(0,255,0,0.1);
+  color: var(--neon-green);
+  border: 1px solid rgba(0,255,0,0.2);
+}
+
+.addPresetButton:hover {
+  background: rgba(0,255,0,0.2);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,255,0,0.2);
+  transform: translateY(-2px);
+}
+
+.removePresetButton:hover {
+  background: rgba(255,0,0,0.2);
+  color: #ff6b6b;
+  box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.addPresetButton:disabled, .removePresetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .headerControls {
+    flex-direction: column;
+  }
+  
+  .controlGroup {
+    width: 100%;
+  }
+  
+  .actionButtonsContainer {
+    flex-wrap: wrap;
+  }
+  
+  .actionButton {
+    width: 100%;
+  }
+}
+
+/* 탭 스타일 */
+.tabsContainer {
+  display: flex;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.tab {
+  padding: 15px 25px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.tab:hover {
+  color: white;
+  background: rgba(255,255,255,0.05);
+}
+
+.activeTab {
+  color: black;
+  background: linear-gradient(45deg, var(--neon-green), var(--neon-green-dark));
+  font-weight: 600;
+}
+
+.tabIcon {
+  font-size: 16px;
+}
+
+.resultTab {
+  margin-left: auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.resultText {
+  font-family: monospace;
+  color: white;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.copyBadge {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,255,0,0.1);
+  color: var(--neon-green);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Cuts 섹션 스타일 수정 */
+.presetsSection {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  min-height: calc(100vh - 300px);
+}
+
+.presetsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.presetTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.projectIndicator {
+  font-size: 0.9rem;
+  color: var(--neon-green);
+  opacity: 0.8;
+}
+
+.presetControls {
+  display: flex;
+  gap: 10px;
+}
+
+.addPresetButton, .removePresetButton {
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.addPresetButton {
+  background: rgba(0,255,0,0.1);
+  color: var(--neon-green);
+  border: 1px solid rgba(0,255,0,0.2);
+}
+
+.addPresetButton:hover {
+  background: rgba(0,255,0,0.2);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,255,0,0.2);
+  transform: translateY(-2px);
+}
+
+.removePresetButton:hover {
+  background: rgba(255,0,0,0.2);
+  color: #ff6b6b;
+  box-shadow: 0 5px 15px rgba(255,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.addPresetButton:disabled, .removePresetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Settings 탭 스타일 */
+.settingsSection {
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  min-height: calc(100vh - 300px);
+}
+
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.settingsCard {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.settingsCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.settingsTitle {
+  font-size: 1.2rem;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+.projectContainer {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* 미디어 쿼리 수정 */
+@media (max-width: 768px) {
+  .tab {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .resultTab {
+    display: none;
+  }
+  
+  .settingsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .presetCardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 } 

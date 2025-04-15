@@ -1,17 +1,25 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
+  height: calc(100vh - 64px - 55px - 60px); /* 헤더(64px) + 푸터(55px) + mainContent 패딩(60px) */
+  position: relative;
+  overflow: hidden;
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1rem;
+  gap: 0.9rem;
+  padding: 0.8rem;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 150px;
+  border: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+  scrollbar-width: thin;
 }
 
 .sliderGroup {
@@ -166,38 +174,47 @@
 }
 
 .visualizerContainer {
-  flex-grow: 1;
-  min-height: 400px;
+  flex: 1;
   display: flex;
+  height: calc(100% - 170px); /* controls 영역의 크기 고려 */
+  min-height: 0;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
+  .container {
+    height: calc(100vh - 64px - 55px - 40px); /* 헤더(64px) + 푸터(55px) + mainContent 패딩(40px) */
+    overflow: hidden;
+    gap: 0.8rem;
   }
   
-  .sliderGroup {
-    width: 100%;
+  .controls {
+    max-height: 110px;
+    padding: 0.7rem;
+    gap: 0.8rem;
   }
   
   .visualizerContainer {
-    min-height: 300px;
+    height: calc(100% - 130px); /* 모바일에서 controls 영역 크기 고려 */
+    min-height: 0;
   }
 }
 
 /* 태블릿 디바이스 추가 최적화 */
 @media (max-width: 768px) and (min-width: 481px) {
   .container {
-    gap: 1rem;
+    gap: 0.9rem;
   }
 
   .controls {
     padding: 0.8rem;
-    gap: 1.2rem;
+    gap: 1rem;
+    max-height: 120px;
   }
 
-  .sliderGroup {
-    gap: 0.6rem;
+  .visualizerContainer {
+    height: calc(100% - 140px); /* 태블릿에서 controls 영역 크기 고려 */
   }
 
   .sliderHeader label {
@@ -227,12 +244,20 @@
 /* 모바일 디바이스 최적화 */
 @media (max-width: 480px) {
   .container {
-    gap: 1rem;
+    height: calc(100vh - 64px - 55px - 40px); /* 헤더(64px) + 푸터(55px) + mainContent 패딩(40px) */
+    gap: 0.7rem;
+    overflow: hidden;
   }
 
   .controls {
-    padding: 0.7rem;
-    gap: 1rem;
+    padding: 0.6rem;
+    gap: 0.8rem;
+    max-height: 90px;
+  }
+
+  .visualizerContainer {
+    height: calc(100% - 100px); /* 작은 모바일에서 controls 영역 크기 고려 */
+    min-height: 0;
   }
 
   .sliderGroup {
@@ -253,7 +278,7 @@
 
   .focalLengthLabel {
     padding: 0.15rem 0.4rem;
-    font-size: 0.75rem;
+    font-size: 0.75rem;#$
   }
 
   .slider::-webkit-slider-thumb {
@@ -290,34 +315,38 @@
     padding: 0.4rem 0.6rem;
     font-size: 0.8rem;
   }
-
-  .visualizerContainer {
-    min-height: 250px;
-  }
 }
 
 /* 가로 모드 최적화 */
 @media (max-width: 768px) and (orientation: landscape) {
   .container {
+    height: calc(100vh - 64px - 55px - 40px); /* 헤더(64px) + 푸터(55px) + mainContent 패딩(40px) */
     flex-direction: row;
     gap: 1rem;
+    overflow: hidden;
   }
 
   .controls {
     width: 40%;
-    max-height: 80vh;
+    height: 100%;
+    max-height: 100%;
     overflow-y: auto;
   }
 
   .visualizerContainer {
     width: 60%;
-    min-height: 80vh;
+    height: 100%;
   }
 }
 
 /* 작은 화면 세로 모드 최적화 */
 @media (max-height: 600px) {
-  .visualizerContainer {
-    min-height: 200px;
+  .container {
+    height: calc(100vh - 64px - 55px - 40px); /* 헤더(64px) + 푸터(55px) + mainContent 패딩(40px) */
   }
-} 
+  
+  .visualizerContainer {
+    min-height: 0;
+    height: calc(100% - 90px); /* 작은 화면에서 controls 영역 크기 고려 */
+  }
+}
